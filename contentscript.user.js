@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Gravatar
 // @description Adds avatars from Staff to local GitHub.
-// @include https://github.yandex-team.ru/*/branches/all
+// @include https://github.com/*/branches/all
 // @require  jquery.min.js
 // @run-at document-end
 // @version 1.5
@@ -10,10 +10,13 @@
 
 var hasLastPageBranches = true;
 var lastPage;
+var pathParts = location.pathname.split('/');
+var user = pathParts[1],
+var proj = pathParts[2];
 
 for(var i = 2; i < 100 && hasLastPageBranches; ++i){
 
-    $.get('https://github.yandex-team.ru/mm-interfaces/fiji/branches/all?page='+i)
+    $.get('https://github.com/' + user + '/' + proj + '/branches/all?page='+i)
     .then(function(text) {
         var el = $('<div>');
         el.html(text);
