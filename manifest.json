@@ -1,0 +1,23 @@
+{
+    "name": "github no paginator",
+    "version": "0.1",
+    "permissions": [
+        "tabs", "https://github.yandex-team.ru/*/branches/all"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.yandex-team.ru/*/branches/all"
+            ],
+            "js": ["jquery.min.js", "contentscript.user.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ],
+    "icons": {
+        "128": "icon.png"
+    },
+    "manifest_version": 2,
+
+    "update_url": "https://github.yandex-team.ru/invntrm/github-no-paginator/raw/releases/update_manifest.xml"
+}
